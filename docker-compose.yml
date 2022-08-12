@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  script:
+    build: .
+    networks:
+      - my-network
+    container_name: script_esn
+  
+  chrome:
+    image: selenium/standalone-chrome:4.4.0-20220812
+    networks:
+      - my-network
+    container_name: chrome
+    ports:
+      - 4444:4444
+    shm_size: 2g
+      
+networks:
+  my-network:
+    name: crawl
