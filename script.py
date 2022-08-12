@@ -17,7 +17,7 @@ def get_html_source(link:str) -> str:
     Returns:
         str: html source code
     """
-    driver = webdriver.Remote("http://127.0.0.1:4444/wd/hub", options=webdriver.ChromeOptions())
+    driver = webdriver.Remote("http://chrome:4444/wd/hub", options=webdriver.ChromeOptions())
     driver.get(link)
     html = driver.page_source
     driver.quit()
