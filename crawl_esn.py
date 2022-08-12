@@ -69,16 +69,17 @@ def send_email(products: Dict[str, bool]):
         for receiver in config["EMAIL"]["receivers"].split(','):
             msg['To'] = receiver
             server.sendmail(sender_email, receiver, msg.as_string())
-            print(f"an {receiver} fertig")
+            print(f"Email sent to  {receiver} successfully")
             time.sleep(2)
 
 def main():
-    link = "https://www.esn.com/en/products/esn-designer-whey"
-    # link = "https://www.esn.com/en/products/esn-isoclear-whey-isolate"
+    # link = "https://www.esn.com/en/products/esn-designer-whey"
+    link = "https://www.esn.com/en/products/esn-isoclear-whey-isolate"
     html = get_html_source(link)
     products = evaluate_html_esn(html)
     if any(products.values()):
         send_email(products)
-
+    else:
+        print("No products available!")
 if __name__ == "__main__":
     main()  
