@@ -1,0 +1,4 @@
+[EMAIL]
+account = email@email.com
+password = 123456
+receivers = first@email.com,second@email.com,@third@email.com
